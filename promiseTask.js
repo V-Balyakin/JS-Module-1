@@ -1,35 +1,18 @@
-let promise = new Promise(function (resolve,reject) {
-    function addWithDelay(firstNumber, secomdNumber, thirdNumber) {
-
-        setTimeout(() => resolve("what should be here?"), 1000);
-        setTimeout(() => reject(new Error("Error! Some parameter is a negative number!")), 1000);
-    }
-});
-
-promise.then(
-    function(resolve),
-    function(error)
-);
-
-function loadScript(src) {
-    return new Promise(function(resolve, reject) {
-      let script = document.createElement('script');
-      script.src = src;
-  
-      script.onload = () => resolve(script);
-      script.onerror = () => reject(new Error(`Ошибка загрузки скрипта ${src}`));
-  
-      document.head.append(script);
+let positiveSleep = milliseconds => {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(), milliseconds);
     });
-  }
+};
 
-// Применение
+let addWithDelay = (firstNumber, secondNumber) => {
+    if (firstNumber > 0 && secondNumber > 0) {
+        return positiveSleep(1000).then((firstNumber, secondNumber) => (firstNumber + secondNumber));
+    } else {
+        return new Promise((resolve, reject) => {
+            reject(console.log('Error! Some parameter is negative number!'));
+        });
+    }
+};
 
-  let promise = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js");
-
-promise.then(
-  script => alert(`${script.src} загружен!`),
-  error => alert(`Ошибка: ${error.message}`)
-);
-
-promise.then(script => alert('Ещё один обработчик...'));
+console.log(addWithDelay(2, 5));
+addWithDelay(-2, 5);
