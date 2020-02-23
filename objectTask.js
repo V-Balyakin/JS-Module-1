@@ -13,4 +13,24 @@ function sortHappinessProperties() {
     }
     return sortedPropertyNames;
 }
+
+function sortHappinessPropertiesSecondVersion () {
+    let happinessSecondVersion = {
+        8: "smile",
+        10: "soulFeelings",
+        9: "mood",
+        7: "altruism",
+        6: "creativity"
+    };
+    let arrayWithProperties = [];
+    for (let property in happinessSecondVersion) {
+        arrayWithProperties.push(property);
+    }
+    let sortedArray = arrayWithProperties.reverse();
+    let listOfProperties = [];
+    sortedArray.forEach((item) => listOfProperties.push(happinessSecondVersion[item]));
+    return listOfProperties;
+}
+
 console.log(sortHappinessProperties());
+console.log(sortHappinessPropertiesSecondVersion());
