@@ -1,0 +1,26 @@
+{
+    "flag": true,
+    "myPromises": [
+        "1",
+        "2",
+        "3"
+    ],
+    "element": [],
+    "screenshot": null,
+    "elementText": "Logout",
+    "allElementsText": "asedconstasdfre const",
+    "counter": 2,
+    "config": "common",
+    "const": "first",
+    "parameters": [
+        "a",
+        "s",
+        "d",
+        "g",
+        "e",
+        "f",
+        "e",
+        "t"
+    ],
+    "description": "qwertyuiopfdafdsafadfdasf"
+}
