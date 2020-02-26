@@ -1,5 +1,5 @@
 function verifyJSONFile() {
-    const fs = require('fs'); // импортируем модуль fs в проект
+    const fs = require('fs');
     const jsonFile = fs.readFileSync('jsonFile.json');
     const object = JSON.parse(jsonFile);
     let wordForCompare = 'FiRst',
@@ -15,43 +15,43 @@ function verifyJSONFile() {
         quantityOfFields = 0;
     const verifyFlag = (parameter) => {
             return typeof parameter == 'boolean';
-        }, // boolean -> true
+        },
         verifyMyPromises = (myPromises) => {
             return Array.isArray(myPromises);
-        }, // array -> true
+        },
         verifyElement = (element) => {
-            return element instanceof Object; // object -> true НО ЭТО НЕ СОВСЕМ ОБЪЕКТ
+            return element instanceof Object;
         },
         verifyScreenshot = (screenshot) => {
             return Object.is(screenshot, null);
-        }, // null -> true
+        },
         verifyElementText = (elementText) => {
-            return typeof (elementText) == 'string'; // string -> true
+            return typeof (elementText) == 'string';
         },
         verifyAllElementsText = (allElementsText) => {
-            return allElementsText.indexOf('const') !== -1; // содержит строку 'const' -> true
+            return allElementsText.indexOf('const') !== -1;
         },
         verifyCounter = (counter, numberForCompare) => {
-            return counter > numberForCompare; // > numberForCompare -> true (или False)
+            return counter > numberForCompare;
         },
         verifyCommon = (config) => {
-            return config === 'Common'; // false
+            return config === 'Common';
         },
         verifyConst = (word, wordForCompare) => {
-            return word.toUpperCase() === wordForCompare.toUpperCase(); // true
+            return word.toUpperCase() === wordForCompare.toUpperCase();
         },
         verifyParametersClean = (parameters) => {
-            if ((Array.isArray(parameters) === flagForCompare) && (parameters.length === lengthForCompare)) { // предварительно TRUE
+            if ((Array.isArray(parameters) === flagForCompare) && (parameters.length === lengthForCompare)) {
                 parameters.forEach(element => {
                     if (typeof (element) === typeof (word)) {
                         counter++;
                     }
                 });
             }
-            return counter === numberOfStringElements; // true
+            return counter === numberOfStringElements;
         },
         verifyDescription = (description) => {
-            return (description.length > lowerBound) && (description.length < upperBound); // false
+            return (description.length > lowerBound) && (description.length < upperBound);
         };
     const verifyJSON = {
         flag: verifyFlag(object.flag),
