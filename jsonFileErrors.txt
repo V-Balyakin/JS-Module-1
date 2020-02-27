@@ -1,5 +1,0 @@
-The condition is not satisfied in the element: 
-counter: 2
- config: common
- description: qwertyuiopfdafdsafadfdasf
- 
