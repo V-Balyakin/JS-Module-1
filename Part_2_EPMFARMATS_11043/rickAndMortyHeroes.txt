@@ -1,4 +1,4 @@
 "Secretary of the Interior"
-    "Human"
-    "Earth (Replacement Dimension)"
-    "Male"
+"Human"
+"Earth (Replacement Dimension)"
+"Male"

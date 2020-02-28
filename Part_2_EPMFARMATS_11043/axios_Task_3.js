@@ -8,7 +8,8 @@ axios({
   .then(response => {
     fs.writeFileSync('rickAndMortyHeroes.txt',
    `${JSON.stringify(response.data.name)}
-    ${JSON.stringify(response.data.species)}
-    ${JSON.stringify(response.data.location.name)}
-    ${JSON.stringify(response.data.gender)}`);
+${JSON.stringify(response.data.species)}
+${JSON.stringify(response.data.location.name)}
+${JSON.stringify(response.data.gender)}`);
   });
+  
