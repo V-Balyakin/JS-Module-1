@@ -1,4 +1,4 @@
-"Secretary of the Interior"
+"Beth Smith"
 "Human"
 "Earth (Replacement Dimension)"
-"Male"
+"Female"

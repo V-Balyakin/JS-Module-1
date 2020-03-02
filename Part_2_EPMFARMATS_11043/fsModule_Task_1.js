@@ -1,7 +1,8 @@
 const fs = require('fs');
+const pathToFile = 'Romeo and Juliet_cutted version.txt';
 function printEvenStringsFromFile() {
-    if (fs.existsSync('Romeo and Juliet_cutted version.txt')) {
-        const arrayWithEvenStrings = fs.readFileSync('Romeo and Juliet_cutted version.txt', 'utf-8').toString().split("\r\n"),
+    if (fs.existsSync(pathToFile)) {
+        const arrayWithEvenStrings = fs.readFileSync(pathToFile, 'utf-8').toString().split("\r\n"),
             divider = 2,
             sortedArray = arrayWithEvenStrings.filter(string => string !== '');
         console.log('Even strings: \n');

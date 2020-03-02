@@ -1,7 +1,9 @@
-const fs = require('fs');
+const fs = require('fs'),
+    pathToJSON = 'jsonFile.json',
+    pathToFileWithErrors = 'jsonFileErrors.txt';
 
 function getObjectFromJSON() {
-    const jsonFile = fs.readFileSync('jsonFile.json');
+    const jsonFile = fs.readFileSync(pathToJSON);
     return JSON.parse(jsonFile);
 }
 
@@ -33,10 +35,10 @@ function getObjectWithVerifiedProperties() {
     return {
         flag: (typeof (objectFromJSONFIle.flag) === 'boolean'),
         myPromises: Array.isArray(objectFromJSONFIle.myPromises),
-        element: objectFromJSONFIle.element instanceof Object,
+        element: typeof objectFromJSONFIle.element === 'object' && !Object.is(objectFromJSONFIle.element, null),
         screenshot: Object.is(objectFromJSONFIle.screenshot, null),
         elementText: typeof (objectFromJSONFIle.elementText) === 'string',
-        allElementsText: objectFromJSONFIle.allElementsText.indexOf('const') !== -1,
+        allElementsText: objectFromJSONFIle.allElementsText.includes('const'),
         counter: objectFromJSONFIle.counter > data.numberForCompare,
         config: objectFromJSONFIle.config === 'Common',
         constParameter: data.word.toUpperCase() === data.wordForCompare.toUpperCase(),
@@ -45,19 +47,17 @@ function getObjectWithVerifiedProperties() {
     };
 }
 
-function showResult () {
-    fs.writeFileSync('jsonFileErrors.txt', 'The condition is not satisfied in the element: \n');
-    fs.appendFileSync('jsonFileErrors.txt', JSON.stringify(notValidKeys));
+function showResult() {
+    fs.writeFileSync(pathToFileWithErrors, JSON.stringify(notValidKeys));
     let result = Object.entries(notValidKeys).length === 0 ? 'All is OKAY' : 'See file jsonFileErrors.txt';
     console.log(result);
 }
 
 function compareJSONFileAndExpectedResult() {
-    const
-        verifyJSON = getObjectWithVerifiedProperties();
-        notValidKeys = getDataForCompare().notValidKeys;
+    const verifyJSON = getObjectWithVerifiedProperties();
+    notValidKeys = getDataForCompare().notValidKeys;
     for (let key in verifyJSON) {
-        if (verifyJSON[key] === false) {
+        if (!verifyJSON[key]) {
             notValidKeys[key] = getObjectFromJSON()[key];
         }
     }
