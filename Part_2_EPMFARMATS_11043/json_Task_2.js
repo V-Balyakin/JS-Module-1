@@ -20,14 +20,10 @@ function getDataForCompare() {
     };
 }
 
-function verifyOnStringType(element) {
-    return typeof element === 'string';
-}
-
 function verifyKeyParametersInJSONFile(data, objectFromJSONFIle) {
     return (Array.isArray(objectFromJSONFIle.parameters) === data.flagForCompare) &&
         (objectFromJSONFIle.parameters.length === data.lengthForCompare) &&
-        objectFromJSONFIle.parameters.every(verifyOnStringType);
+        objectFromJSONFIle.parameters.every((element) => typeof element === 'string');
 }
 
 function getObjectWithVerifiedProperties() {
