@@ -31,9 +31,9 @@ function addWithDelay(...args) {
 
 function addWithDelaySecond(...args) {
     return new Promise ((resolve, reject) => {
-         args.every((arrayElement) => arrayElement > 0) ? setTimeout(() => {
+         args.every(arrayElement => arrayElement > 0 ? setTimeout(() => {
             resolve(args.reduce((counter, currentElement) => counter + currentElement));
-        }, 1000) : reject ('Here are (one OR more) negative numbers');
+        }, 1000) : reject ('Here are (one OR more) negative numbers'));
     });
 }
 

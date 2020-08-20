@@ -25,7 +25,7 @@ function getDataForCompare() {
 function verifyKeyParametersInJSONFile(data, objectFromJSONFIle) {
     return (Array.isArray(objectFromJSONFIle.parameters) === data.flagForCompare) &&
         (objectFromJSONFIle.parameters.length === data.lengthForCompare) &&
-        objectFromJSONFIle.parameters.every((element) => typeof element === 'string');
+        objectFromJSONFIle.parameters.every(element => typeof element === 'string');
 }
 
 function getObjectWithVerifiedProperties() {
@@ -54,8 +54,8 @@ function showResult() {
 }
 
 function compareJSONFileAndExpectedResult() {
-    const verifyJSON = getObjectWithVerifiedProperties();
-    notValidKeys = getDataForCompare().notValidKeys;
+    const verifyJSON = getObjectWithVerifiedProperties(),
+        notValidKeys = getDataForCompare().notValidKeys;
     for (let key in verifyJSON) {
         if (!verifyJSON[key]) {
             notValidKeys[key] = getObjectFromJSON()[key];

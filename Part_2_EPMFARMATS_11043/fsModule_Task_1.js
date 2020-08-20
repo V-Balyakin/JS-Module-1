@@ -1,5 +1,5 @@
-const fs = require('fs');
-const pathToFile = 'Romeo and Juliet_cutted version.txt';
+const fs = require('fs'),
+    pathToFile = 'Romeo and Juliet_cutted version.txt';
 function printEvenStringsFromFile() {
     if (fs.existsSync(pathToFile)) {
         const arrayWithEvenStrings = fs.readFileSync(pathToFile, 'utf-8').toString().split("\r\n"),

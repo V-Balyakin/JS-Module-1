@@ -1,17 +1,17 @@
-function multiplyThreeGreatestElementsInArray () {
-    let array = [];
-    let arraySize = 10;
-    let multiplier = 50;
-    let borderForCount = 3;
-    let multiplyOfThreeGreatestNumbers = 1;
+function multiplyThreeGreatestElementsInArray() {
+    let array = [],
+        arraySize = 10,
+        multiplier = 50,
+        borderForCount = 3,
+        multiplyOfThreeGreatestNumbers = 1;
     for (let i = 0; i < arraySize; i++) {
         array[i] = Math.floor(Math.random() * multiplier);
     }
-    array.sort((firstNumber, secondNumber) => firstNumber - secondNumber);
-    for (let j = 0; j < borderForCount; j++) {
-        multiplyOfThreeGreatestNumbers = multiplyOfThreeGreatestNumbers * array[j];
+    array.sort((a, b) => a - b);
+    for (let j = arraySize - 1; j >= arraySize - borderForCount; j--) {
+        multiplyOfThreeGreatestNumbers *= array[j];
     }
-    return(multiplyOfThreeGreatestNumbers);
+    return (multiplyOfThreeGreatestNumbers);
 }
 
 console.log(multiplyThreeGreatestElementsInArray());
